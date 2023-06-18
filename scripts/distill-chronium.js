@@ -1,34 +1,28 @@
 const { ethers } = require("hardhat");
 
 const deployed = {
-    adddresses: require("../deployed/mainnet.json"),
-    artifacts: {
-        Chronium: require("../deployed/Chronium.json"),
-        ChroniumDistillery: require("../deployed/ChroniumDistilleryV1.json"),
-    },
+    addresses: require("../deployed/localhost.json"),
 };
 
 (async () => {
     const account = await ethers.getSigner();
 
-    const chronium = new ethers.Contract(
-        deployed.adddresses.Chronium,
-        deployed.artifacts.Chronium.abi,
-        account
+    const chronium = await ethers.getContractAt(
+        "Chronium",
+        deployed.addresses.Chronium
     );
 
-    const distillery = new ethers.Contract(
-        deployed.adddresses.ChroniumDistillery,
-        deployed.artifacts.ChroniumDistillery.abi,
-        account
+    const distillery = await ethers.getContractAt(
+        "ChroniumDistilleryV1",
+        deployed.addresses.ChroniumDistillery
     );
 
     chron = await chronium.balanceOf(account.address);
     console.log(`Your Chronium Balance is ${chron}.`);
 
-    tx = await distillery.distill(10000);
+    tx = await distillery.distill(3);
     await tx.wait();
-    console.log("You have distilled 10000 time.");
+    console.log("You have distilled 3 time.");
 
     chron = await chronium.balanceOf(account.address);
     console.log(`Your new Chronium Balance is ${chron}.`);

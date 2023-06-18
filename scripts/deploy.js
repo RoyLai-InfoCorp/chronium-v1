@@ -6,7 +6,7 @@ const networkName = network.name;
     const accounts = await ethers.getSigners();
 
     // DEPLOY AND INIT CHRONIUM
-const Chronium = await ethers.getContractFactory("Chronium");
+    const Chronium = await ethers.getContractFactory("Chronium");
     const chronium = await Chronium.deploy(
         "Chronium",
         "CHRON",
@@ -30,7 +30,7 @@ const Chronium = await ethers.getContractFactory("Chronium");
     };
     console.log(contracts);
     fs.writeFileSync(
-        `./deploy/${networkName}.json`,
+        `./deployed/${networkName}.json`,
         JSON.stringify(contracts, null, 4)
     );
 })()

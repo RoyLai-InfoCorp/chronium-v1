@@ -1,22 +1,16 @@
 const { ethers } = require("hardhat");
 
 const deployed = {
-    adddresses: require("../deployed/mainnet.json"),
-    artifacts: {
-        Chronium: require("../deployed/Chronium.json"),
-        ChroniumDistillery: require("../deployed/ChroniumDistilleryV1.json"),
-    },
+    addresses: require("../deployed/localhost.json"),
 };
 
 (async () => {
     const account = await ethers.getSigner();
 
-    const chronium = new ethers.Contract(
-        deployed.adddresses.Chronium,
-        deployed.artifacts.Chronium.abi,
-        account
+    const chronium = await ethers.getContractAt(
+        "Chronium",
+        deployed.addresses.Chronium
     );
-    console.log(account.address);
     const time = await chronium.checkTimeBalance(account.address);
     if (time == 0) {
         console.log(`Your Time Balance is ${time}`);
@@ -27,6 +21,6 @@ const deployed = {
         );
     } else {
         console.log(`Your Time Balance is ${time}`);
-        console.log("Use ChroniumDistillery to convert time into Chronium");
+        console.log("Use ChroniumDistillery to distill time into Chronium");
     }
 })();

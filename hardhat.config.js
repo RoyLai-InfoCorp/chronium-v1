@@ -29,26 +29,5 @@ module.exports = {
                 mnemonic: process.env.CHRONIUM_LOCAL__MNEMONIC,
             },
         },
-        goerli: {
-            chainId: 5,
-            url: process.env.CHRONIUM_TESTNET__URL,
-            accounts: {
-                mnemonic: process.env.CHRONIUM_TESTNET__MNEMONIC,
-            },
-        },
-        mainnet: {
-            chainId: 1,
-            url: process.env.CHRONIUM_MAINNET__URL,
-            accounts: {
-                mnemonic: process.env.CHRONIUM_MAINNET__MNEMONIC,
-                passphrase: process.env.CHRONIUM_MAINNET__PASSPHRASE,
-            },
-        },
-    },
-    etherscan: {
-        apiKey: {
-            goerli: process.env.CHRONIUM_ETHERSCAN,
-            mainnet: process.env.CHRONIUM_ETHERSCAN,
-        },
     },
 };
