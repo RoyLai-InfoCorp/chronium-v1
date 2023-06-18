@@ -1,4 +1,4 @@
-[submodule "chronium-sol"]
+[submodule "contracts/chronium-sol"]
 	path = contracts/chronium-sol
 	url = https://www.github.com/RoyLai-InfoCorp/chronium-sol
 	branch = Development
