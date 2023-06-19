@@ -17,13 +17,12 @@ const deployed = {
         deployed.addresses.ChroniumDistillery
     );
 
-    chron = await chronium.balanceOf(account.address);
-    console.log(`Your Chronium Balance is ${chron}.`);
+    const time = await chronium.checkTimeBalance(account.address);
 
-    tx = await distillery.distill(3);
+    const tx = await distillery.distill(time);
     await tx.wait();
-    console.log("You have distilled 3 time.");
+    console.log(`You have distilled ${time} time.`);
 
-    chron = await chronium.balanceOf(account.address);
-    console.log(`Your new Chronium Balance is ${chron}.`);
+    const balance = await chronium.balanceOf(account.address);
+    console.log(`Your Chronium balance is ${balance}.`);
 })();
