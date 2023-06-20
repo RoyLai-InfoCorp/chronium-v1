@@ -56,3 +56,8 @@ cache/
 .env.production.local
 .openzeppelin
 .openai
+
+## CHRONIUM
+
+deployed/localhost.json
+deployed/hardhat.json
